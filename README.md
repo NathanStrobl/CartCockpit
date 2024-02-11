@@ -37,6 +37,22 @@ To run this software on an Arduino with an ILI9341, please make sure the followi
 - Adafruit GFX Library
 - Adafruit ILI9341
 
+PARTS LIST
+====================
+The following components are required to build this project, along with links to buy the required parts:
+- Arduino Uno/Nano
+- [3.2" ILI9341 LCD](https://www.amazon.com/gp/product/B0B1M9S9V6/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&th=1)
+- [5V to 3.3V 8-bit Logic Shifter](https://www.amazon.com/gp/product/B09R1QG957/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1) (all data lines to LCD must be stepped down to 3.3V)
+- [Hall effect sensor](https://www.amazon.com/gp/product/B07QS6PN3B/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
+- [TMP36 temperature sensor](https://www.amazon.com/BOJACK-Temperature-Sensors-TMP36GZ-Precision/dp/B08BFY91ZW/ref=sr_1_1_sspa?crid=2FS63S5LD867Q&keywords=tmp35&qid=1707685772&s=industrial&sprefix=tmp35%2Cindustrial%2C122&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1)
+- [Photocell](https://www.amazon.com/eBoot-Photoresistor-Sensitive-Resistor-Dependent/dp/B01N7V536K/ref=sr_1_3?crid=1CYTGXLT83XGN&keywords=photocell+electronics&qid=1707685813&s=industrial&sprefix=photocell+electronic%2Cindustrial%2C81&sr=1-3) (for automatic light control)
+- [Three-position switch](https://www.amazon.com/gp/product/B085L9HFW2/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1) (for manual light control)
+- [5V relay](https://www.amazon.com/Tolako-Arduino-Indicator-Channel-Official/dp/B00VRUAHLE/ref=sr_1_2_sspa?crid=Q408NAHBK67V&keywords=5v+relay&qid=1707685858&s=industrial&sprefix=5v+relay%2Cindustrial%2C93&sr=1-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1) (for Arduino to be able to control 12V lights)
+- [Button](https://www.amazon.com/Gikfun-6x6x5mm-Switch-Button-Arduino/dp/B00R17XUFC/ref=sr_1_3?crid=IHS2W5JLVKLN&keywords=arduino+button&qid=1707685880&s=industrial&sprefix=arduino+button%2Cindustrial%2C84&sr=1-3)
+- [60V to 5V USB converter](https://www.amazon.com/SSLHONG-Converter-Regulator-Waterproof-Transformer/dp/B0BJQ2PS3K/ref=sr_1_5?keywords=60v%2Bto%2B5v%2Busb&qid=1707685928&sr=8-5&th=1)
+
+I will post a schematic for this project once I find the appropriate software to do so; until then, all connections for this project should be able to be found either within the source code or by Googling common connections for each individual part. 
+
 PHOTOS
 ====================
 CartCockpit can be seen in action by viewing the files in the /Media directory.
