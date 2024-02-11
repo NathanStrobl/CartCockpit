@@ -39,6 +39,6 @@ To run this software on an Arduino with an ILI9341, please make sure the followi
 
 PHOTOS
 ====================
-<video style="max-height:600px" autoplay loop muted controls>
-	<source src="/Photos/cartcockpit.mp4" type="video/mp4" />
-</video>
+CartCockpit can be seen in action by viewing the files in the /Media directory.
+
+<!-- or by viewing the Gallery section [on this page](https://nathan-strobl.org/cartcockpit/overview). -->
