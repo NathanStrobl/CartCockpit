@@ -38,7 +38,7 @@ Arduino hardware locations.
 /*
 Conversion and unit-specific values (uncomment the desired units file).
 */
-#include "Units/Metric.h";
+#include "units/Metric.h";
 //#include "Units/Imperial.h"; 
 
 
@@ -62,8 +62,8 @@ Adafruit_ILI9341 lcd = Adafruit_ILI9341(DISPLAY_CS, DISPLAY_DC_RS, DISPLAY_RST);
 //fonts
 #include "Fonts/FreeSans9pt7b.h"
 #include "Fonts/FreeSansBold12pt7b.h"
-#include "Fonts/FreeSansBoldNumbersAndSymbols18pt7b.h"
-#include "Fonts/CartCockpitGlyphs.h"
+#include "custom-fonts/FreeSansBoldNumbersAndSymbols18pt7b.h"
+#include "custom-fonts/CartCockpitGlyphs.h"
 #define NINE_PT 0
 #define TWELVE_PT 1
 #define EIGHTEEN_PT 2
@@ -152,6 +152,14 @@ DisplayUpdater* displayUpdater = new DisplayUpdater(EEPROM.read(EEPROM_CURRENT_S
 //speedometer
 #include "SpeedSensor.h"
 SpeedSensor* speedSensor = new SpeedSensor(0, 0, 0);  //dummy instantiator; reinstantiated in the 'setup' function
+
+
+/*
+Calculates the outside temperature. 
+*/
+byte getOutsideTemperature() {
+  return (analogRead(TEMPERATURE_SENSOR) * TEMPERATURE_CONVERSION_MULTIPLIER) + TEMPERATURE_FAHRENHEIT_OFFSET;
+}
 
 
 /*
@@ -735,6 +743,28 @@ void updateBatteryGaugeAndGlyph() {
 
 
 /*
+Distance, speed, and range calculation related functions.
+*/
+void incrementAllOdometers(int meters) {
+  odometer->Increment(meters);
+  tripOdometer->Increment(meters);
+  sinceStoppedOdometer->Increment(meters);
+}
+
+int getCalculatedAndConvertedVelocity(float metersTraveled, int milliseconds) {
+  float metersPerHour = SECONDS_IN_AN_HOUR * (1000 / speedSensor->GetSpeedIntervalDurationMillis()) * metersTraveled;
+  return (metersPerHour / METERS_CONVERSION);
+}
+
+void stoppedSequence() {
+  float stateOfChargeAtBeginningOfSprint = batteryMonitoringSystem->GetStateOfCharge();  //a 'sprint' is defined as the time between the vehicle beginning to move and ceasing movement
+  batteryMonitoringSystem->UpdatePeriodicVoltageValue();
+  EEPROM.put(EEPROM_AVG_CHG_DIST_ADDRESS, batteryMonitoringSystem->RecordSprintDataAndGetNewAverageChargeDistance(sinceStoppedOdometer->GetRawOdometerValue(), (stateOfChargeAtBeginningOfSprint - batteryMonitoringSystem->GetStateOfCharge())));
+  sinceStoppedOdometer = new Odometer();
+}
+
+
+/*
 Interrupt service routines.
 */
 void changeScreenSelection() {
@@ -762,36 +792,6 @@ void startNewSpeedometerInterval() {
   if (speedSensor->RunStoppedSequence()) {
     stoppedSequence();
   }
-}
-
-
-/*
-Distance, speed, and range calculation related functions.
-*/
-void incrementAllOdometers(int meters) {
-  odometer->Increment(meters);
-  tripOdometer->Increment(meters);
-  sinceStoppedOdometer->Increment(meters);
-}
-
-int getCalculatedAndConvertedVelocity(float metersTraveled, int milliseconds) {
-  float metersPerHour = SECONDS_IN_AN_HOUR * (1000 / speedSensor->GetSpeedIntervalDurationMillis()) * metersTraveled;
-  return (metersPerHour / METERS_CONVERSION);
-}
-
-void stoppedSequence() {
-  float stateOfChargeAtBeginningOfSprint = batteryMonitoringSystem->GetStateOfCharge();  //a 'sprint' is defined as the time between the vehicle beginning to move and ceasing movement
-  batteryMonitoringSystem->UpdatePeriodicVoltageValue();
-  EEPROM.put(EEPROM_AVG_CHG_DIST_ADDRESS, batteryMonitoringSystem->RecordSprintDataAndGetNewAverageChargeDistance(sinceStoppedOdometer->GetRawOdometerValue(), (stateOfChargeAtBeginningOfSprint - batteryMonitoringSystem->GetStateOfCharge())));
-  sinceStoppedOdometer = new Odometer();
-}
-
-
-/*
-Calculates the outside temperature. 
-*/
-byte getOutsideTemperature() {
-  return (analogRead(TEMPERATURE_SENSOR) * TEMPERATURE_CONVERSION_MULTIPLIER) + TEMPERATURE_FAHRENHEIT_OFFSET;
 }
 
 

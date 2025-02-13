@@ -2,13 +2,6 @@
 An Arduino sketch that can turn an Arduino Uno/Nano into a digital instrument cluster for golf carts when paired with a few other components.
 
 CartCockpit / Copyright (C) 2024 Nathan Strobl / nathanstrobl34@gmail.com
-All of the software in this repository is covered under version 3.0 of the GNU General Public License; a copy of this license has been included in the root folder. 
-This software may be copied, distributed, and/or modified without express permission of the author under the following conditions:
-    - The copied, distributed, and/or modified version the software remains open-source, and
-    - The copied and/or modified version of the software is distributed free of charge (i.e. users are not allowed to modify the software and then charge a price for others to use it).
-
-If you have any questions or feedback about this software and its license, please reach out to me at the email address listed above.
-
 
 ABOUT THIS SOFTWARE
 ====================
@@ -55,6 +48,6 @@ I will post a schematic for this project once I find the appropriate software to
 
 PHOTOS
 ====================
-CartCockpit can be seen in action by viewing the files in the /Media directory.
+CartCockpit can be seen in action by viewing the files in the /gallery directory.
 
 <!-- or by viewing the Gallery section [on this page](https://nathan-strobl.org/cartcockpit/overview). -->
