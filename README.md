@@ -3,7 +3,7 @@ An Arduino sketch that can turn an Arduino Uno/Nano into a digital instrument cl
 
 CartCockpit / Copyright (C) 2024 Nathan Strobl / nathanstrobl34@gmail.com
 
-ABOUT THIS SOFTWARE
+About This Project
 ====================
 This software includes the following functionality:
 - Speedometer & odometer
@@ -23,14 +23,16 @@ Unfortunately, time constraints and my departure for school have prevented me fr
 
 <!-- A more in depth explanation of this project can be found [here](https://nathan-strobl.org/cartcockpit/overview). -->
 
-REQUIRED LIBRARIES
+Required Libraries
 ====================
 To run this software on an Arduino with an ILI9341, please make sure the following libraries are installed:
 - Adafruit BusIO
 - Adafruit GFX Library
 - Adafruit ILI9341
 
-PARTS LIST
+It is also recommended to use PlatformIO to build and upload this code to your Arduino Nano board.
+
+Parts List
 ====================
 The following components are required to build this project, along with links to buy the required parts:
 - Arduino Uno/Nano
@@ -46,7 +48,7 @@ The following components are required to build this project, along with links to
 
 I will post a schematic for this project once I find the appropriate software to do so; until then, all connections for this project should be able to be found either within the source code or by Googling common connections for each individual part. 
 
-PHOTOS
+Photos
 ====================
 CartCockpit can be seen in action by viewing the files in the /gallery directory.
 
